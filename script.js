@@ -54,3 +54,36 @@ if (input && output) {
     }
   });
 }
+
+const listItems = document.querySelectorAll('#mysteryList li');
+
+if (listItems.length > 0) {
+  listItems.forEach((item) => {
+    item.addEventListener('click', function() {
+      let nonClickedCount = 0;
+
+      listItems.forEach((li) => {
+        if (li === item) {
+          li.className = 'highlight1';
+        } else {
+          if (nonClickedCount % 2 === 0) {
+            li.className = 'highlight-l';
+          } else {
+            li.className = 'highlightI';
+          }
+          nonClickedCount++;
+        }
+      });
+    });
+  });
+}
+
+const title = document.getElementById('glitchTitle');
+
+if (title) {
+  setTimeout(() => {
+    title.innerText = 'DOM Restored!';
+    title.style.color = 'limegreen';
+    title.style.fontSize = '40px';
+  }, 3000);
+}
